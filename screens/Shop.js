@@ -6,6 +6,7 @@ import { FlatGrid } from 'react-native-super-grid';
 import AntIcon from 'react-native-vector-icons/dist/AntDesign'
 import FoodIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons'
 import IonIcon from 'react-native-vector-icons/dist/Ionicons'
+import BottomNav from '../component/BottomNav';
 
 class Shop extends Component {
     constructor(props) {
@@ -230,6 +231,7 @@ class Shop extends Component {
                         keyExtractor={this.state.market.id}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
+                                activeOpacity={0.9}
                                 onPress={() => this.props.navigation.navigate('Detail', {
                                     userId : this.state.userId,
                                     marketId : item.id
@@ -243,7 +245,7 @@ class Shop extends Component {
                                  }}
                             >
                                 <Image
-                                    style={{ width : 120, height : 120 }}
+                                    style={{ width : 120, height : 120, borderRadius: 10 }}
                                     source={{ uri : 'http://10.0.2.2:8000/static/'+ item.market_img }}
                                 />
                                 <View style={{ flex : 1, marginLeft : 10 }}>
@@ -280,53 +282,7 @@ class Shop extends Component {
                 </View>
 
                 {!this.state.isKeyboadVisible && (
-                    <View 
-                        style = {{
-                            backgroundColor: 'white',
-                            padding: 10,
-                            flexDirection: 'row',
-                            shadowRadius: 3,
-                            shadowOffset: {
-                                width: 0,
-                                height: 2,
-                            },
-                            shadowColor: '#000000',
-                            elevation: 10,
-                        }}>
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('Home', {
-                                userId : this.state.userId
-                            })}
-                            style = {{ justifyContent : 'center', alignItems : 'center', flex : 1}}
-                        >
-                            <Icon name="home" size={21} color="#ababab" />
-                            <Text style={{ fontSize : 12 }}>Home</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style = {{ justifyContent : 'center', alignItems : 'center', flex : 1}}
-                        >
-                            <Icon name="credit-card" size={21} color="#ababab" />
-                            <Text style={{ fontSize : 12 }}>Transaction</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style = {{ justifyContent : 'center', alignItems : 'center', flex : 1}}
-                        >
-                            <Icon name="store" size={21} color="#43a047" />
-                            <Text style={{ fontSize : 12 }}>Shop</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style = {{ justifyContent : 'center', alignItems : 'center', flex : 1}}
-                        >
-                            <Icon name="heart" size={21} color="grey" />
-                            <Text style={{ fontSize : 12 }}>Favourite</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style = {{ justifyContent : 'center', alignItems : 'center', flex : 1}}
-                        >
-                            <Icon name="user" size={21} color="grey"/>
-                            <Text style={{ fontSize : 12 }}>Profile</Text>
-                        </TouchableOpacity>
-                    </View>
+                    <BottomNav navigation={this.props.navigation} userId={this.state.userId} current={"Shop"}/>
                 )}
             </View>
         );

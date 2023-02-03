@@ -5,6 +5,7 @@ import FoodIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons'
 import FIcon from 'react-native-vector-icons/dist/Fontisto'
 import LinearGradient from 'react-native-linear-gradient';
 import slider from './SLIDER'
+import BottomNav from '../component/BottomNav';
 
 class Home extends Component {
     constructor(props) {
@@ -166,7 +167,9 @@ class Home extends Component {
 
                         <View style = {styles.headerVIcon}>
                             <View style={{ flexDirection : 'row' }}>
-                                <TouchableOpacity style={{ marginRight : 20 }}>
+                                <TouchableOpacity style={{ marginRight : 20 }} onPress={() => this.props.navigation.navigate('Cart', {
+                                    userId: this.state.userId
+                                })}>
                                     <Icon name="shopping-basket" size={21} color="white"/>
                                 </TouchableOpacity>
                                 <TouchableOpacity>
@@ -271,7 +274,7 @@ class Home extends Component {
                                     }}
                                 >
                                     <Image
-                                        style={{ height : 100, width : 200 }}
+                                        style={{ height : 100, width : 200, borderRadius : 10 }}
                                         source={{ uri : 'http://10.0.2.2:8000/static/slider/'+ item.img }}
                                     />
 
@@ -308,6 +311,7 @@ class Home extends Component {
                         style={{ flexDirection : 'row', marginTop : 10 }}
                     >
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             onPress={() => this.props.navigation.navigate('Shop', { catValue : 1, userId : this.state.userId })}
                             style = {{ justifyContent : 'center', alignItems : 'center', marginLeft : 30}}
                         >
@@ -317,6 +321,7 @@ class Home extends Component {
                             <Text style={{ marginTop : 5, fontWeight : 'bold' }}>Nasi</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             onPress={() => this.props.navigation.navigate('Shop', { catValue : 2, userId : this.state.userId })}
                             style = {{ justifyContent : 'center', alignItems : 'center', marginLeft : 30}}
                         >
@@ -326,6 +331,7 @@ class Home extends Component {
                             <Text style={{ marginTop : 5, fontWeight : 'bold' }}>Kopi</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             onPress={() => this.props.navigation.navigate('Shop', { catValue : 3, userId : this.state.userId })}
                             style = {{ justifyContent : 'center', alignItems : 'center', marginLeft : 30}}
                         >
@@ -335,6 +341,7 @@ class Home extends Component {
                             <Text style={{ marginTop : 5, fontWeight : 'bold' }}>Dessert</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             onPress={() => this.props.navigation.navigate('Shop', { catValue : 4, userId : this.state.userId })}
                             style = {{ justifyContent : 'center', alignItems : 'center', marginLeft : 30}}
                         >
@@ -344,6 +351,7 @@ class Home extends Component {
                             <Text style={{ marginTop : 5, fontWeight : 'bold' }}>Mie</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             onPress={() => this.props.navigation.navigate('Shop', { catValue : 5, userId : this.state.userId })}
                             style = {{ justifyContent : 'center', alignItems : 'center', marginLeft : 30}}
                         >
@@ -353,6 +361,7 @@ class Home extends Component {
                             <Text style={{ marginTop : 5, fontWeight : 'bold' }}>Sayuran</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             onPress={() => this.props.navigation.navigate('Shop', { catValue : 6, userId : this.state.userId })}
                             style = {{ justifyContent : 'center', alignItems : 'center', marginLeft : 30, marginRight : 30}}
                         >
@@ -388,6 +397,11 @@ class Home extends Component {
                             keyExtractor={this.state.randData.id}
                             renderItem={({item, index}) => (
                                 <TouchableOpacity
+                                    activeOpacity={0.9}
+                                    onPress={() => this.props.navigation.navigate('Detail', {
+                                        userId : this.state.userId,
+                                        marketId : item.id
+                                    })}
                                     style={{ 
                                         justifyContent : 'center',
                                         width : 150,
@@ -400,7 +414,7 @@ class Home extends Component {
                                     }}
                                 >
                                     <Image
-                                        style={{ width : 120, height : 120 }}
+                                        style={{ width : 120, height : 120, borderRadius : 5 }}
                                         source={{ uri : 'http://10.0.2.2:8000/static/'+ item.market_img }}
                                     />
                                     <View style={{ flex : 1 }}>
@@ -444,6 +458,11 @@ class Home extends Component {
                             keyExtractor={this.state.kenyangin.id}
                             renderItem={({item, index}) => (
                                 <TouchableOpacity
+                                    activeOpacity={0.9}
+                                    onPress={() => this.props.navigation.navigate('Detail', {
+                                        userId : this.state.userId,
+                                        marketId : item.id
+                                    })}
                                     style={{ 
                                         justifyContent : 'center',
                                         width : 150,
@@ -456,7 +475,7 @@ class Home extends Component {
                                     }}
                                 >
                                     <Image
-                                        style={{ width : 120, height : 120 }}
+                                        style={{ width : 120, height : 120, borderRadius : 5 }}
                                         source={{ uri : 'http://10.0.2.2:8000/static/'+ item.market_img }}
                                     />
                                     <View style={{ flex : 1 }}>
@@ -500,6 +519,11 @@ class Home extends Component {
                             keyExtractor={this.state.nyegerin.id}
                             renderItem={({item, index}) => (
                                 <TouchableOpacity
+                                    activeOpacity={0.9}
+                                    onPress={() => this.props.navigation.navigate('Detail', {
+                                        userId : this.state.userId,
+                                        marketId : item.id
+                                    })}
                                     style={{ 
                                         justifyContent : 'center',
                                         width : 150,
@@ -512,7 +536,7 @@ class Home extends Component {
                                     }}
                                 >
                                     <Image
-                                        style={{ width : 120, height : 120 }}
+                                        style={{ width : 120, height : 120, borderRadius: 5 }}
                                         source={{ uri : 'http://10.0.2.2:8000/static/'+ item.market_img }}
                                     />
                                     <View style={{ flex : 1 }}>
@@ -543,53 +567,7 @@ class Home extends Component {
                 </ScrollView>
                 
                 {!this.state.isKeyboadVisible && (
-                    <View 
-                        style = {{
-                            backgroundColor: 'white',
-                            padding: 10,
-                            flexDirection: 'row',
-                            shadowRadius: 3,
-                            shadowOffset: {
-                                width: 0,
-                                height: 2,
-                            },
-                            shadowColor: '#000000',
-                            elevation: 10,
-                        }}>
-                        <TouchableOpacity
-                            style = {{ justifyContent : 'center', alignItems : 'center', flex : 1}}
-                        >
-                            <Icon name="home" size={21} color="#43a047" />
-                            <Text style={{ fontSize : 12 }}>Home</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style = {{ justifyContent : 'center', alignItems : 'center', flex : 1}}
-                        >
-                            <Icon name="credit-card" size={21} color="#ababab" />
-                            <Text style={{ fontSize : 12 }}>Transaction</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('Shop', {
-                                userId : this.state.userId
-                            })}
-                            style = {{ justifyContent : 'center', alignItems : 'center', flex : 1}}
-                        >
-                            <Icon name="store" size={21} color="#ababab" />
-                            <Text style={{ fontSize : 12 }}>Shop</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style = {{ justifyContent : 'center', alignItems : 'center', flex : 1}}
-                        >
-                            <Icon name="heart" size={21} color="grey" />
-                            <Text style={{ fontSize : 12 }}>Favourite</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style = {{ justifyContent : 'center', alignItems : 'center', flex : 1}}
-                        >
-                            <Icon name="user" size={21} color="grey"/>
-                            <Text style={{ fontSize : 12 }}>Profile</Text>
-                        </TouchableOpacity>
-                    </View>
+                    <BottomNav navigation={this.props.navigation} userId={this.state.userId} current={"Home"}/>
                 )}
             </View>
         );
